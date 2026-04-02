@@ -1,48 +1,64 @@
-import './Sidebar.css'
-
-const MENU = [
-  {
-    title: 'Manage My Account',
-    items: [
-      { id: 'profile',  label: 'My Profile' },
-     
-    ],
-  },
-  
-]
-
-export default function Sidebar({ active, onSelect }) {
+export default function Sidebar({ active, setActive }) {
   return (
     <aside className="sidebar">
-      {MENU.map(({ title, items, directId }) => (
-        <div key={title} className="sidebar-group">
-          {directId ? (
-            <button
-              className={`sidebar-heading btn-link ${active === directId ? 'active' : ''}`}
-              onClick={() => onSelect(directId)}
-            >
-              {title}
-            </button>
-          ) : (
-            <p className="sidebar-heading">{title}</p>
-          )}
+      
+      {/* Section 1 */}
+      <p className="sidebar-heading">Manage My Account</p>
+      <ul>
+        <li>
+          <button 
+            className={`sidebar-item border-0 bg-transparent ${active === "profile" ? "active" : ""}`}
+            onClick={() => setActive("profile")}
+          >
+            My Profile
+          </button>
+        </li>
+      </ul>
 
-          {items.length > 0 && (
-            <ul>
-              {items.map(({ id, label }) => (
-                <li key={id}>
-                  <button
-                    className={`sidebar-item btn-link ${active === id ? 'active' : ''}`}
-                    onClick={() => onSelect(id)}
-                  >
-                    {label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      ))}
+      {/* Section 2 */}
+      <p className="sidebar-heading">My Orders</p>
+      <ul>
+        <li>
+          <button 
+            className={`sidebar-item border-0 bg-transparent {active === "orders" ? "active" : ""}`} 
+            onClick={() => setActive("orders")}
+          >
+            My Orders
+          </button>
+        </li>
+
+        <li>
+          <button 
+            className={`sidebar-item border-0 bg-transparent {active === "returns" ? "active" : ""}`} 
+            onClick={() => setActive("returns")}
+          >
+            My Returns
+          </button>
+        </li>
+
+        <li>
+          <button 
+            className={`sidebar-item border-0 bg-transparent {active === "cancellations" ? "active" : ""}`} 
+            onClick={() => setActive("cancellations")}
+          >
+            My Cancellations
+          </button>
+        </li>
+      </ul>
+
+      {/* Section 3 */}
+      <p className="sidebar-heading">Wishlist</p>
+      <ul>
+        <li>
+          <button 
+            className={`sidebar-item border-0 bg-transparent {active === "wishlist" ? "active" : ""}`} 
+            onClick={() => setActive("wishlist")}
+          >
+            My Wishlist
+          </button>
+        </li>
+      </ul>
+
     </aside>
-  )
+  );
 }

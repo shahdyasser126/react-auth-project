@@ -9,7 +9,7 @@ export const Layout = () => {
     <AuthProvider>
       <Header/>
       <NavBar/>
-      <Outlet/>
+<div style={{paddingBottom:"170px"}}>  <Outlet /> </div>
       <Footer/>
     </AuthProvider>
   )
